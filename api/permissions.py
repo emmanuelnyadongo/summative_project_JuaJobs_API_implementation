@@ -82,6 +82,20 @@ class IsAdminOnly(permissions.BasePermission):
         return request.user.is_authenticated and request.user.is_admin
 
 
+class IsAdminOrReadOnly(permissions.BasePermission):
+    """
+    Custom permission to allow admin users to edit and others to read.
+    """
+    
+    def has_permission(self, request, view):
+        # Allow read access to all authenticated users
+        if request.method in permissions.SAFE_METHODS:
+            return request.user.is_authenticated
+        
+        # Allow write access only to admin users
+        return request.user.is_authenticated and request.user.is_admin
+
+
 class IsVerifiedUser(permissions.BasePermission):
     """
     Custom permission to only allow verified users to perform certain actions.

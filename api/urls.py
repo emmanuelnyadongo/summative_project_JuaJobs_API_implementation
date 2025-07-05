@@ -9,9 +9,6 @@ from .views import (
     PasswordChangeView,
     PasswordResetView,
     PasswordResetConfirmView,
-    user_profile_view,
-    refresh_token_view,
-    verify_token_view,
     
     # User views
     UserViewSet,
@@ -48,6 +45,7 @@ from .views import (
     SkillViewSet,
     UserSkillViewSet,
 )
+from .views.auth_views import user_profile_view, refresh_token_view, verify_token_view
 
 # Create router and register viewsets
 router = DefaultRouter()

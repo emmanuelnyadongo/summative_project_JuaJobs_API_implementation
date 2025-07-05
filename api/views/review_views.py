@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import OrderingFilter
-from ..models import Review
+from ..models import Review, User
 from ..serializers import (
     ReviewSerializer,
     ReviewCreateSerializer,

@@ -76,6 +76,10 @@ class JobCategoryAdmin(admin.ModelAdmin):
     search_fields = ['name', 'description']
     ordering = ['name']
 
+    def job_count(self, obj):
+        return obj.jobs.count()
+    job_count.short_description = 'Job Count'
+
 
 @admin.register(Job)
 class JobAdmin(admin.ModelAdmin):

@@ -1,7 +1,7 @@
 from .auth_views import (
     UserRegistrationView,
     UserLoginView,
-    UserLogoutView,
+    user_logout_view,
     PasswordChangeView,
     PasswordResetView,
     PasswordResetConfirmView,
@@ -46,7 +46,7 @@ __all__ = [
     # Auth views
     'UserRegistrationView',
     'UserLoginView',
-    'UserLogoutView',
+    'user_logout_view',
     'PasswordChangeView',
     'PasswordResetView',
     'PasswordResetConfirmView',
