@@ -45,7 +45,7 @@ A comprehensive RESTful API for the JuaJobs gig economy platform, built with Dja
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/emmanuelnyadongo/summative_project_JuaJobs_API_implementation.git
    cd jua-jobs-api
    ```
 
