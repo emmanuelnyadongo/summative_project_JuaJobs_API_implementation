@@ -1,6 +1,5 @@
 from rest_framework import viewsets, status, generics
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
@@ -26,6 +25,7 @@ from ..permissions import (
     IsJobParticipant,
     IsJobApplicationParticipant,
 )
+from rest_framework.permissions import IsAuthenticated
 
 
 class JobCategoryViewSet(viewsets.ReadOnlyModelViewSet):
@@ -71,6 +71,11 @@ class JobViewSet(viewsets.ModelViewSet):
     queryset = Job.objects.all()
     serializer_class = JobSerializer
     permission_classes = [IsAuthenticated, IsJobOwnerOrReadOnly]
+    
+    def get_permissions(self):
+        if self.action == 'create':
+            return [IsAuthenticated(), CanPostJobs()]
+        return [IsAuthenticated(), IsJobOwnerOrReadOnly()]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['status', 'job_type', 'experience_level', 'category', 'is_remote', 'is_featured', 'is_urgent']
     search_fields = ['title', 'description', 'location', 'required_skills', 'preferred_skills']
